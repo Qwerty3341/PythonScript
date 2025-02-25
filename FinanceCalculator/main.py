@@ -1,5 +1,13 @@
-def calculate_left_salary() -> None:
-    pass
+def calculate_left_salary(gross_salary: float) -> None:
+    print('------------------------------------------------')
+    list_of_expenses : list = input().split()
+
+    print('Put the money that you spend in each expense')
+    for expense in list_of_expenses:
+        expense_value: float = float(input(f'{expense} = '))
+        gross_salary -= expense_value
+
+    print('Left salary ',gross_salary)
 
 
 def calculate_finances(monthly_income: float, tax_rate: float, currency: str) -> None:
@@ -10,7 +18,7 @@ def calculate_finances(monthly_income: float, tax_rate: float, currency: str) ->
     yearly_net_income: float = yearly_salary - yearly_tax
     
     print('------------------------------------------------')
-    print(f'Monthly income: {currency} {monthly_income:,.2f}')
+    print(f'Monthly income (gross): {currency} {monthly_income:,.2f}')
     print(f'Tax rate: {tax_rate:,.0f}%')
     print(f'Monthly tax: {currency} {monthly_tax:,.2f}')
     print(f'Monthly net income: {currency} {monthly_net_income:,.2f}')
@@ -19,18 +27,26 @@ def calculate_finances(monthly_income: float, tax_rate: float, currency: str) ->
     print(f'Yearly net income: {currency} {yearly_net_income:,.2f}')
     print('------------------------------------------------')
 
+    add_expenses = input('Add expenses (Y/N)? ').lower()
+    if add_expenses == 'y':
+        calculate_left_salary(monthly_net_income)
+
     
 def main() -> None:
-    monthly_income: float = float(input('Monthly salary: '))
-    while not isinstance(monthly_income, float):
-        print('Put a float value!')
-        monthly_income: float = float(input('Monthly salary: '))
-
-    tax_rate: float = float(input('Tax rate (%): '))
-    while not isinstance(monthly_income, float):
-        print('Put a float value!')
-        tax_rate: float = float(input('Tax rate (%): '))
-
+    while True:
+        try:
+            monthly_income: float = float(input('Monthly salary: '))
+            break
+        except:
+            print('Put a float value!')
+        
+    while True:
+        try:
+            tax_rate: float = float(input('Tax rate (%): '))
+            break
+        except:
+            print('Put a float value!')
+    
     calculate_finances(monthly_income, tax_rate, currency='MX')
 
 
