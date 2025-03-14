@@ -1,3 +1,3 @@
 # PythonScript
 
-Just python proyects
+Just python mini-proyects
