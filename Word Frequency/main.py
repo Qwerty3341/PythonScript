@@ -37,7 +37,6 @@ def check_text(text: str) -> None:
 
 def main() -> None:
 
-    # text_input: str = input("\n┌How do you prefer to put the text?\nן\t1 -> read a file\n|\t2 -> paste text\n└─>")
     text_input: str = input("\n┌How do you prefer to put the text?\n│   1 -> read a file\n│   2 -> paste text\n└──> ")
 
     match text_input:
